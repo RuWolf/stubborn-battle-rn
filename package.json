@@ -7,6 +7,9 @@
     "web": "expo start --web",
     "eject": "expo eject"
   },
+  "engines": {
+    "node": "12.16.2"
+  },
   "dependencies": {
     "expo": "~38.0.8",
     "expo-status-bar": "^1.0.2",
