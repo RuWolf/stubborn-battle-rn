@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, Text, View, Button, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, Button, StyleSheet } from 'react-native';
 
 export default App = () => {
-  const [isLoading, setLoading] = useState(true);
-  const [data, setData] = useState('');
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0)
+  const [isStart, setIsStart] = useState(false)
 
   const test = async() => {
     try {
@@ -22,13 +21,23 @@ export default App = () => {
   }
 
   click = () => {
-    setCount(count => count+1)
+    setCount(count+1)
+  }
+
+  start = () => {
+    setIsStart(true)
+    setTimeout(() => {
+      setIsStart(false)
+      setCount(0)
+    }, 5000);
+
   }
 
   return (
     <View style={styles.container}>
         <Text style={styles.countText}>{count}</Text>
-        <Button onPress={click} title='name' style={styles.button}></Button>
+        {isStart ? <Button onPress={click} title='click' style={styles.button}></Button> :
+        <Button title='start' onPress={start}></Button>}
     </View>
   )
 };
